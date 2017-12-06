@@ -1,0 +1,25 @@
+include /_mixins
+
+doctype html
+html
+	head
+		title Todo List
+		+stylesheet_link_tag('main')
+		+javascript_include_tag('vendor/all')
+		+javascript_include_tag('handlebars_templates')
+
+	body
+		div#nav-wrap.float-wrap
+		main
+			label#nav_toggle
+				img(src="/images/hamberger_black.png" alt="menu button")
+			<!--RIGHT PANE-->
+			div#list
+		div#modal-wrap
+
+	+javascript_include_tag('application')
+	+javascript_include_tag('models/todo')
+	+javascript_include_tag('collections/todos')
+	+javascript_include_tag('views/list', 'views/nav', 'views/modal')
+	script(type="text/javascript").
+		app.init();

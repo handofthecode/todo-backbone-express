@@ -1,0 +1,14 @@
+<dl class="main_heading">
+	<dt id="heading">All Todos</dt>
+	<dd id="display-count" class="todo-count">{{count}}</dd>
+</dl>
+<!--TODOS-->
+<a id="add_todo"><h3>Add new todo</h3></a>
+<ul id="todo-display">
+	{{#each todos}}
+		<li class="todo{{#if complete}} complete{{/if}}" data-id={{id}}>
+			<a class="todo-title">{{title}} - {{date}}</a>
+			<a class="delete"><img src="/images/delete.png" alt="delete"></a>
+		</li>
+	{{/each}}
+</ul>
