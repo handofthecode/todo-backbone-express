@@ -1,5 +1,8 @@
 var Todos = Backbone.Collection.extend({
   model: Todo,
+  comparator: function(model) {
+    return model.get('complete') === true ? 1 : -1;
+  },
   completed: function() {
     return this.where({complete: true});
   },
@@ -84,6 +87,5 @@ var Todos = Backbone.Collection.extend({
     this.loadList();
     this.loadSerialID();
     this.checkDataIntegrity();
-    this.comparator = 'complete';
   }
 });
