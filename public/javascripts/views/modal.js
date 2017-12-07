@@ -144,7 +144,6 @@ var Modal = Backbone.View.extend({
     }
   },
   cacheDOM: function() {
-    // FORM ELEMENTS //
     this.$title = $('#title');
     this.$day = $('#day');
     this.$month = $('#month');

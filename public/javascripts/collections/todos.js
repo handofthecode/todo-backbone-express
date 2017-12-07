@@ -9,24 +9,15 @@ var Todos = Backbone.Collection.extend({
   notCompleted: function() {
     return this.where({complete: false});
   },
-  matchDate: function(date, list) {
-    if (list === 'completed') list = this.completed();
-    else if (list === 'notCompleted') list = this.notCompleted();
-    else list = this;
-
-    return list.filter(todo => {
-      return todo.displayDate() === date;
-    });
-  },
-  orderedNavObjects: function(list) {
+  orderedNavObjects: function(completed) {
     var ids = {};
-    list = list === 'completed' ? this.completed() : this;
+    var list = completed ? this.completed() : this;
 
     // e.g. {12/18: [1,2,4,6,8], "No Date Due": [3,5,7]} //
     list.forEach(todo => {
-      var date = todo.displayDate();
+      var date = todo.get('date');
       ids[date] = ids[date] || [];
-      ids[date].push(todo.id);
+      ids[date].push(todo.get('id'));
     });
 
     // e.g. ["No Date Due", "12/18"] //
@@ -48,7 +39,7 @@ var Todos = Backbone.Collection.extend({
     return this.map(todo => {
       return {
         id: todo.get('id'),
-        date: todo.displayDate(),
+        date: todo.get('date'),
         title: todo.get('title'),
         complete: todo.get('complete')
       }
@@ -58,7 +49,7 @@ var Todos = Backbone.Collection.extend({
     return this.completed().length;
   },
   markComplete: function(id) {
-    this.get(id).complete = true;
+    this.update(id, {complete: true});
   },
   update: function(id, obj) {
     this.get(id).set(obj);

@@ -47,7 +47,7 @@ var Nav = Backbone.View.extend({
   render: function() {
     this.$el.html(this.template({
       group: this.collection.orderedNavObjects(),
-      completedGroup: this.collection.orderedNavObjects('completed'),
+      completedGroup: this.collection.orderedNavObjects(true),
       completedCount: this.collection.completedCount(),
       totalCount: this.collection.length
     }));
