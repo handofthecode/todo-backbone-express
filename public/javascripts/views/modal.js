@@ -54,7 +54,7 @@ var Modal = Backbone.View.extend({
       this.collection.add(properties);
       navId = 'All Todos';
     } else {
-      this.collection.get(id).set(properties);
+      this.collection.get(id).set(properties).setDate();
       this.setFormID(0);
     }
     this.hide();

@@ -12,8 +12,11 @@ var Todo = Backbone.Model.extend({
       return 'No Date Due';
     }
   },
+  setDate: function() {
+    this.set({ date: this.displayDate() });
+  },
   initialize: function() {
-    this.set({ date: this.displayDate(),
-               complete: false });
+    this.setDate();
+    this.set({ complete: false });
   }
 })
