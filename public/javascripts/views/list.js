@@ -25,7 +25,6 @@ var List = Backbone.View.extend({
     this.collection.remove(id);
   },
   render: function(collection) {
-    collection = collection || this.collection;
     this.$el.html(this.template({ count: collection.length, 
                                   todos: collection.todoDisplayObjects() }));
   },
