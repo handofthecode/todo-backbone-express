@@ -10,6 +10,10 @@ var App = Backbone.View.extend({
     this.nav.render();
     this.display();
   },
+  update: function() {
+    this.collection.saveData();
+    this.updateViews();
+  },
   updateViews: function() {
     this.nav.render();
     this.nav.displayTodoGroup();
@@ -28,7 +32,7 @@ var App = Backbone.View.extend({
   },
   registerListeners: function() {
     this.events = _.extend({}, Backbone.Events);
-    this.events.listenTo(this.collection, 'update change', this.updateViews.bind(this));
+    this.events.listenTo(this.collection, 'update change', this.update.bind(this));
   },
   initialize: function() {
     this.collection = new Todos();

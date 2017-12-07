@@ -1,6 +1,6 @@
 var Nav = Backbone.View.extend({
   template: JST.nav,
-  el: '#nav-wrap',
+  el: '#nav',
   events: {
     'click .nav': 'navSelect',
     'click #nav_toggle': 'navToggle'

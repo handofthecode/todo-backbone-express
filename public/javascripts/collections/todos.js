@@ -67,7 +67,7 @@ var Todos = Backbone.Collection.extend({
     this.get(id).toggleComplete();
   },
   saveData: function() {
-    var list = JSON.stringify(this);
+    var list = JSON.stringify(this.toJSON());
     localStorage.setItem('todoList', list);
     localStorage.setItem('todoID', this.serialID);
   },
@@ -77,15 +77,8 @@ var Todos = Backbone.Collection.extend({
   loadSerialID: function() {
     this.serialID = +localStorage.getItem('todoID') || 1;
   },
-  checkDataIntegrity: function() {
-    if (this.serialID === 1 || this.length === 0) {
-      this.serialID = 1;
-      this.reset();
-    }
-  },
   initialize: function() {
     this.loadList();
     this.loadSerialID();
-    this.checkDataIntegrity();
   }
 });
