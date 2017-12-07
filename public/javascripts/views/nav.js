@@ -5,29 +5,41 @@ var Nav = Backbone.View.extend({
     'click #nav': 'navSelect',
     'click #nav_toggle': 'navToggle'
   },
-  navSelect: function(e) {
-    var $nav = $(e.target).closest('.nav');
-    var navID = $nav.attr('data-nav-id');
-    this.highlightNavGroup($nav);
-    if (navID === 'All Todos') {
-      app.display();
-    } else if (navID === 'Completed') {
-      app.display({complete: true});
-    } else if (navID === 'No Date Due' && this.completedNav($nav)) {
-      app.display({date: 'No Date Due', complete: true})
-    } else if (navID === 'No Date Due') {
-      app.display({date: 'No Date Due'});
-    } else if (this.completedNav($nav)) {
-      app.display({date: navID, complete: true });
+  lastDataID: 'All Todos',
+  $lastNav: function() {
+    var $el = $('[data-nav-id="' + this.lastDataID + '"]');
+    if ($el.length === 0) {
+      this.lastDataID = 'All Todos';
+      $el = $('#all-todos');
     }
-    else app.display({date: navID});
+    
+    return $el;
   },
-  completedNav: function($nav) {
-    return $nav.closest('ul').is('#nav-completed-list');
+  lastDataDate: function() {
+    return this.lastDataID.replace(/-completed/, '');
   },
-  highlightNavGroup: function($nav) {
+  navSelect: function(e) {
+    this.lastDataID = $(e.target).closest('.nav').attr('data-nav-id');
+    this.displayTodoGroup();
+  },
+  displayTodoGroup: function() {
+    this.highlightNavGroup();
+    if (this.lastDataID === 'All Todos') {
+      app.display();
+    } else if (this.lastDataID === 'Completed') {
+      app.display({complete: true});
+    } else if (this.lastDataID === 'No Date Due-completed') {
+      app.display({date: 'No Date Due', complete: true})
+    } else if (this.lastDataID === 'No Date Due') {
+      app.display({date: 'No Date Due'});
+    } else if (this.lastDataDate() !== this.lastDataID) {
+      app.display({date: this.lastDataDate(), complete: true });
+    }
+    else app.display({date: this.lastDataDate()});
+  },
+  highlightNavGroup: function() {
     $('.nav_selected').removeClass('nav_selected');
-    $nav.addClass('nav_selected');
+    this.$lastNav().addClass('nav_selected');
   },
   navToggle: function() {
     this.$header.toggleClass('hidden');
@@ -42,6 +54,7 @@ var Nav = Backbone.View.extend({
   },
   cacheDOM: function() {
     this.$header = $('header');
+    this.$allTodos = ('#all-todos');
   },
   initialize: function(todos) {
     this.collection = todos;

@@ -1,8 +1,12 @@
 var app = {
   templates: JST,
-  renderViews: function() {
-    this.display();
+  initializeViews: function() {
     this.nav.render();
+    this.display();
+  },
+  updateViews: function() {
+    this.nav.render();
+    this.nav.displayTodoGroup();
   },
   display(query) {
     var collection = !query ? this.collection : new Todos(this.collection.where(query))
@@ -18,14 +22,14 @@ var app = {
   },
   registerListeners: function() {
     this.events = _.extend({}, Backbone.Events);
-    this.events.listenTo(this.collection, 'update change', this.renderViews.bind(this));
+    this.events.listenTo(this.collection, 'update change', this.updateViews.bind(this));
   },
   init: function() {
     this.collection = new Todos();
     this.list = new List(this.collection);
     this.nav = new Nav(this.collection);
     this.modal = new Modal(this.collection);
-    this.renderViews();
+    this.initializeViews();
     this.registerListeners();
   }
 }

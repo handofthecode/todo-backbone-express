@@ -14,6 +14,16 @@ this["JST"]["nav"] = Handlebars.template({"1":function(container,depth0,helpers,
     + "</dt>				<dd>"
     + alias4(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"count","hash":{},"data":data}) : helper)))
     + "</dd>				</dl>				</li>			";
+},"3":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "				<li class=\"nav\" data-nav-id=\""
+    + alias4(((helper = (helper = helpers.date || (depth0 != null ? depth0.date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"date","hash":{},"data":data}) : helper)))
+    + "-completed\">				<dl>				<dt>"
+    + alias4(((helper = (helper = helpers.date || (depth0 != null ? depth0.date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"date","hash":{},"data":data}) : helper)))
+    + "</dt>				<dd>"
+    + alias4(((helper = (helper = helpers.count || (depth0 != null ? depth0.count : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"count","hash":{},"data":data}) : helper)))
+    + "</dd>				</dl>				</li>			";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -24,7 +34,7 @@ this["JST"]["nav"] = Handlebars.template({"1":function(container,depth0,helpers,
     + "		</ul>	</nav>	<dl id=\"completed\" class=\"nav nav_heading\" data-nav-id=\"Completed\">		<dt><span id=\"nav_h_completed\">Completed</span></dt>		<dd id=\"completed-count\">"
     + alias4(((helper = (helper = helpers.completedCount || (depth0 != null ? depth0.completedCount : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"completedCount","hash":{},"data":data}) : helper)))
     + "</dd>	</dl>	<nav class=\"nav_todo\">		<ul id=\"nav-completed-list\">			"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.completedGroup : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.completedGroup : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "		</ul>	</nav></header>";
 },"useData":true});
 
