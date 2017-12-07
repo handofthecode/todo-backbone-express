@@ -1,5 +1,11 @@
-var app = {
-  templates: JST,
+var App = Backbone.View.extend({
+  el: 'html',
+  events: {
+    'click #nav_toggle': 'toggleNav'
+  },
+  toggleNav: function() {
+    this.nav.toggle();
+  },
   initializeViews: function() {
     this.nav.render();
     this.display();
@@ -24,7 +30,7 @@ var app = {
     this.events = _.extend({}, Backbone.Events);
     this.events.listenTo(this.collection, 'update change', this.updateViews.bind(this));
   },
-  init: function() {
+  initialize: function() {
     this.collection = new Todos();
     this.list = new List(this.collection);
     this.nav = new Nav(this.collection);
@@ -32,4 +38,5 @@ var app = {
     this.initializeViews();
     this.registerListeners();
   }
-}
+});
+

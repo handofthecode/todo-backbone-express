@@ -1,6 +1,6 @@
 var Modal = Backbone.View.extend({
   serialID: 1,
-  template: app.templates.modal,
+  template: JST.modal,
   el: '#modal-wrap',
   events: {
     'click #tint': 'hide',
@@ -58,7 +58,6 @@ var Modal = Backbone.View.extend({
       this.setFormID(0);
     }
     this.hide();
-    // this.setNav(navId);
   },
   handleFormMarkComplete: function() {
     var id = +this.getFormID();

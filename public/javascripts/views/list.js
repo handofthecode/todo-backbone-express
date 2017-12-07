@@ -1,5 +1,5 @@
 var List = Backbone.View.extend({
-  template: app.templates.todoList,
+  template: JST.todoList,
   el: '#list',
   events: {
     'click .delete': 'delete',
@@ -32,7 +32,6 @@ var List = Backbone.View.extend({
   initialize: function(todos) {
     this.collection = todos;
   },
-  // HELPERS //
   todoIdFromEvent: function(e) {
     return $(e.target).closest('li').attr('data-id');
   }

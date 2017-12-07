@@ -1,37 +1,36 @@
-<header id="nav" class="hidden">
-	<dl id="all-todos" class="nav nav_heading nav_selected" data-nav-id="All Todos">
-		<dt><span id="nav_h_todos">All Todos</span></dt>
-		<dd class="todo-count">{{totalCount}}</dd>
-	</dl>
+<dl id="all-todos" class="nav nav_heading nav_selected" data-nav-id="All Todos">
+	<dt><span id="nav_h_todos">All Todos</span></dt>
+	<dd class="todo-count">{{totalCount}}</dd>
+</dl>
 
-	<nav class="nav_todo">
-		<ul id="nav-todo-list">
-			{{#each group}}
-				<li class="nav" data-nav-id="{{date}}">
-				  <dl>
-				    <dt>{{date}}</dt>
-				    <dd>{{count}}</dd>
-				  </dl>
-				</li>
-			{{/each}}
-		</ul>
-	</nav>
+<nav class="nav_todo">
+	<ul id="nav-todo-list">
+		{{#each group}}
+			<li class="nav" data-nav-id="{{date}}">
+			  <dl>
+			    <dt>{{date}}</dt>
+			    <dd>{{count}}</dd>
+			  </dl>
+			</li>
+		{{/each}}
+	</ul>
+</nav>
 
-	<dl id="completed" class="nav nav_heading" data-nav-id="Completed">
-		<dt><span id="nav_h_completed">Completed</span></dt>
-		<dd id="completed-count">{{completedCount}}</dd>
-	</dl>
+<dl id="completed" class="nav nav_heading" data-nav-id="Completed">
+	<dt><span id="nav_h_completed">Completed</span></dt>
+	<dd id="completed-count">{{completedCount}}</dd>
+</dl>
 
-	<nav class="nav_todo">
-		<ul id="nav-completed-list">
-			{{#each completedGroup}}
-				<li class="nav" data-nav-id="{{date}}-completed">
-				  <dl>
-				    <dt>{{date}}</dt>
-				    <dd>{{count}}</dd>
-				  </dl>
-				</li>
-			{{/each}}
-		</ul>
-	</nav>
-</header>
+<nav class="nav_todo">
+	<ul id="nav-completed-list">
+		{{#each completedGroup}}
+			<li class="nav" data-nav-id="{{date}}-completed">
+			  <dl>
+			    <dt>{{date}}</dt>
+			    <dd>{{count}}</dd>
+			  </dl>
+			</li>
+		{{/each}}
+	</ul>
+</nav>
+

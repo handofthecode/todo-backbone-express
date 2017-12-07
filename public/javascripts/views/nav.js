@@ -1,8 +1,8 @@
 var Nav = Backbone.View.extend({
-  template: app.templates.nav,
+  template: JST.nav,
   el: '#nav-wrap',
   events: {
-    'click #nav': 'navSelect',
+    'click .nav': 'navSelect',
     'click #nav_toggle': 'navToggle'
   },
   lastDataID: 'All Todos',
@@ -12,7 +12,7 @@ var Nav = Backbone.View.extend({
       this.lastDataID = 'All Todos';
       $el = $('#all-todos');
     }
-    
+
     return $el;
   },
   lastDataDate: function() {
@@ -41,8 +41,8 @@ var Nav = Backbone.View.extend({
     $('.nav_selected').removeClass('nav_selected');
     this.$lastNav().addClass('nav_selected');
   },
-  navToggle: function() {
-    this.$header.toggleClass('hidden');
+  toggle: function() {
+    this.$el.toggleClass('hidden');
   },
   render: function() {
     this.$el.html(this.template({
@@ -53,7 +53,6 @@ var Nav = Backbone.View.extend({
     }));
   },
   cacheDOM: function() {
-    this.$header = $('header');
     this.$allTodos = ('#all-todos');
   },
   initialize: function(todos) {

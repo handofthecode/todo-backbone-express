@@ -9,7 +9,7 @@ html
 		+javascript_include_tag('handlebars_templates')
 
 	body
-		div#nav-wrap.float-wrap
+		header#nav-wrap.float-wrap.hidden
 		main
 			label#nav_toggle
 				img(src="/images/hamberger_black.png" alt="menu button")
@@ -22,4 +22,4 @@ html
 	+javascript_include_tag('collections/todos')
 	+javascript_include_tag('views/list', 'views/nav', 'views/modal')
 	script(type="text/javascript").
-		app.init();
+		var app = new App();
