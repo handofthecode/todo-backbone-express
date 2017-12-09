@@ -1,5 +1,4 @@
 var Modal = Backbone.View.extend({
-  serialID: 1,
   template: JST.modal,
   el: '#modal-wrap',
   events: {
@@ -50,7 +49,7 @@ var Modal = Backbone.View.extend({
     var id = +this.getFormID();
     var properties = this.getFormValues();
     if (id === 0) {
-      properties.id = this.serialID++;
+      properties.id = this.collection.serialID++;
       this.collection.add(properties);
       navId = 'All Todos';
     } else {
